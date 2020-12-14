@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="#实现简单的文件上传，采用log输出错误">
+    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="#文件上传实现，全采用go原生，未使用任何框架">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.go" afterDir="false" />
@@ -32,8 +32,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Go File" />
         <option value="HTML File" />
+        <option value="Go File" />
       </list>
     </option>
   </component>
@@ -84,16 +84,17 @@
     <MESSAGE value="#第一次上传，建立基本的包结构" />
     <MESSAGE value="#实现简单的文件上传，开启http端口监听" />
     <MESSAGE value="#实现简单的文件上传，采用log输出错误" />
-    <option name="LAST_COMMIT_MESSAGE" value="#实现简单的文件上传，采用log输出错误" />
+    <MESSAGE value="#文件上传实现，全采用go原生，未使用任何框架" />
+    <option name="LAST_COMMIT_MESSAGE" value="#文件上传实现，全采用go原生，未使用任何框架" />
   </component>
   <component name="WindowStateProjectService">
     <state x="141" y="39" key="SettingsEditor" timestamp="1607774893628">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="141" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1607774893628" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1607828654066">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1607848708604">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1607828654066" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1607848708604" />
   </component>
 </project>

@@ -9,14 +9,15 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	"time"
+	"zone/src/meta"
+	"zone/src/util"
 )
 
 //文件上传(这里一定要注意，方法名首字母大写，否则无法在别的包中被引用发现)
 func UploadHandler(w http.ResponseWriter, r *http.Request) {
-	fmt.Printf("4")
 	//首次访问指定url默认采用GET方法提交，所以需要调出提交文件表单页面
 	if r.Method == "GET" {
-		fmt.Printf("5")
 		//通过读取html文件再交由http.ResponseWriter输出的方式实现文件提交页面的唤出
 		data, err := ioutil.ReadFile("static/view/index.html")
 		if err != nil {
@@ -25,7 +26,6 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 		}
 		_, _ = io.WriteString(w, string(data))
 	} else if r.Method == "POST" {
-		fmt.Printf("6")
 		//将文件存储至本地
 		file, head, err := r.FormFile("file")
 
@@ -34,19 +34,29 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		defer file.Close()
+		fileMeta := meta.FileMeta{
+			FileName: head.Filename,
+			Location: "/tmp/" + head.Filename,
+			UpdateAt: time.Now().Format("2006-01-01 15:11:11"),
+		}
 		//在本地创建一个新的文件去承载上传的文件
-		newFile, err := os.Create("/tmp/" + head.Filename)
+		newFile, err := os.Create(fileMeta.Location)
 		if err != nil {
 			fmt.Printf("Failed to create newFile data %s\n", err.Error())
 			return
 		}
 
 		defer newFile.Close()
-		_, err = io.Copy(newFile, file)
+		fileMeta.FileSize, err = io.Copy(newFile, file)
 		if err != nil {
 			fmt.Printf("Failed to save into newFile %s\n", err.Error())
 			return
 		}
+		//将文件光标移至文件开头，且偏移量为0
+		newFile.Seek(0, 0)
+		fileMeta.FileSha1 = util.FileSha1(newFile)
+		//将刚刚上传的文件的sha1索引添加到map中
+		meta.UpdataFileMeta(fileMeta)
 		// 重定向到成功的页面逻辑
 		http.Redirect(w, r, "/file/upload/suc", http.StatusFound)
 	}
