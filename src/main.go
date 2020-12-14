@@ -10,6 +10,7 @@ func main() {
 	//设置http的路由规则，类似于Java框架中设置请求拦截规则
 	http.HandleFunc("/file/upload", handler.UploadHandler)
 	http.HandleFunc("/file/upload/suc", handler.UploadSucHandler)
+	http.HandleFunc("/file/meta", handler.GetFileMetaHandler)
 	//开启http监听
 	//err := http.ListenAndServe(":8080", nil)
 	//if err != nil {

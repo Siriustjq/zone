@@ -4,6 +4,7 @@ package handler
 实现文件的上传和下载
 */
 import (
+	"encoding/json"
 	"fmt"
 	"io"
 	"io/ioutil"
@@ -37,7 +38,7 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 		fileMeta := meta.FileMeta{
 			FileName: head.Filename,
 			Location: "/tmp/" + head.Filename,
-			UpdateAt: time.Now().Format("2006-01-01 15:11:11"),
+			UpdateAt: time.Now().Format("2006-01-02 15:04:05"),
 		}
 		//在本地创建一个新的文件去承载上传的文件
 		newFile, err := os.Create(fileMeta.Location)
@@ -55,6 +56,7 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 		//将文件光标移至文件开头，且偏移量为0
 		newFile.Seek(0, 0)
 		fileMeta.FileSha1 = util.FileSha1(newFile)
+		fmt.Printf(fileMeta.FileSha1)
 		//将刚刚上传的文件的sha1索引添加到map中
 		meta.UpdataFileMeta(fileMeta)
 		// 重定向到成功的页面逻辑
@@ -65,4 +67,18 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 // 文件上传成功处理逻辑
 func UploadSucHandler(w http.ResponseWriter, r *http.Request) {
 	_, _ = io.WriteString(w, "Upload Succeed!")
+}
+
+func GetFileMetaHandler(w http.ResponseWriter, r *http.Request) {
+	//格式化请求参数信息
+	r.ParseForm()
+	filehash := r.Form["filehash"][0]
+	fMeta := meta.GetFileMeta(filehash)
+	//将文件转换为json格式
+	data, err := json.Marshal(fMeta)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	w.Write(data)
 }
