@@ -11,6 +11,7 @@ func main() {
 	http.HandleFunc("/file/upload", handler.UploadHandler)
 	http.HandleFunc("/file/upload/suc", handler.UploadSucHandler)
 	http.HandleFunc("/file/meta", handler.GetFileMetaHandler)
+	http.HandleFunc("/file/download", handler.DownloadFile)
 	//开启http监听
 	//err := http.ListenAndServe(":8080", nil)
 	//if err != nil {

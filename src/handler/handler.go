@@ -82,3 +82,25 @@ func GetFileMetaHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write(data)
 }
+
+func DownloadFile(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	//仍然是通过前面定义的sha1串进行唯一索引
+	filehash := r.Form.Get("filehash")
+	filemeta := meta.GetFileMeta(filehash)
+	file, err := os.Open(filemeta.Location)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	defer file.Close()
+	data, err := ioutil.ReadAll(file)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	//为在浏览器中演示，添加http头，让浏览器弹出下载页面
+	w.Header().Set("Content-Type", "application/octect-stream")
+	w.Header().Set("Content-disposition", "attachment;filename=\""+filemeta.FileName+"\"")
+	w.Write(data)
+}
