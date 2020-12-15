@@ -15,6 +15,8 @@ import (
 	"zone/src/util"
 )
 
+const path = "/tmp/"
+
 //文件上传(这里一定要注意，方法名首字母大写，否则无法在别的包中被引用发现)
 func UploadHandler(w http.ResponseWriter, r *http.Request) {
 	//首次访问指定url默认采用GET方法提交，所以需要调出提交文件表单页面
@@ -37,7 +39,7 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 		defer file.Close()
 		fileMeta := meta.FileMeta{
 			FileName: head.Filename,
-			Location: "/tmp/" + head.Filename,
+			Location: path + head.Filename,
 			UpdateAt: time.Now().Format("2006-01-02 15:04:05"),
 		}
 		//在本地创建一个新的文件去承载上传的文件
@@ -83,7 +85,8 @@ func GetFileMetaHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(data)
 }
 
-func DownloadFile(w http.ResponseWriter, r *http.Request) {
+//文件下载接口
+func DownloadFileHandler(w http.ResponseWriter, r *http.Request) {
 	r.ParseForm()
 	//仍然是通过前面定义的sha1串进行唯一索引
 	filehash := r.Form.Get("filehash")
@@ -103,4 +106,47 @@ func DownloadFile(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/octect-stream")
 	w.Header().Set("Content-disposition", "attachment;filename=\""+filemeta.FileName+"\"")
 	w.Write(data)
+}
+
+//UpdateFileHandler文件更新接口
+func UpdateFileHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	//三个参数输入，更新类型，sha1索引值，以及更新值，目前仅仅更新文件名称
+	//更新操作需要安全保证，所以应该采用post提交
+	if r.Method != "POST" {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	operate := r.Form.Get("op")
+	filehash := r.Form.Get("filehash")
+	newFileName := r.Form.Get("newname")
+	// op==0为更新文件名称操作
+	if operate != "0" {
+		w.WriteHeader(http.StatusForbidden)
+		return
+	}
+	//更新filemeta索引
+	filemeta := meta.GetFileMeta(filehash)
+	filemeta.FileName = newFileName
+	//底层重命名文件
+	err := os.Rename(filemeta.Location, path+newFileName)
+	//filemeta.Location = path + newFileName
+	meta.UpdateFileName(filehash, path+newFileName)
+	if err != nil {
+		w.WriteHeader(http.StatusInternalServerError)
+		return
+	}
+	w.Write([]byte("Change name succeed, the new filename is " + newFileName))
+}
+
+//DeleteFileHandler文件删除接口
+func DeleteFileHandler(w http.ResponseWriter, r *http.Request) {
+	r.ParseForm()
+	filehash := r.Form.Get("filehash")
+	name := r.Form.Get("newname")
+	//filemeta := meta.GetFileMeta(filehash)
+
+	os.Remove(path + name)
+	meta.DeleteMeta(filehash)
+	io.WriteString(w, "Delete success!")
 }

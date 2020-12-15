@@ -27,3 +27,14 @@ func UpdataFileMeta(fmeta FileMeta) {
 func GetFileMeta(fsha1 string) FileMeta {
 	return fileMetas[fsha1]
 }
+
+//删除文件元信息
+func DeleteMeta(fsha1 string) {
+	delete(fileMetas, fsha1)
+}
+
+//更新filemeta内部的具体信息(更新文件名称)
+func UpdateFileName(fsha1 string, newName string) {
+	fileMetas := fileMetas[fsha1]
+	fileMetas.Location = newName
+}
