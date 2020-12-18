@@ -19,11 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="#通过浏览器进行文件下载逻辑添加">
+    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="#添加文件重命名以及文件删除操作接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/meta/filemeta.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/meta/filemeta.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,6 +77,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#第一次上传，建立基本的包结构" />
@@ -89,17 +87,18 @@
     <MESSAGE value="#添加FileMeta文件元数据结构体以及sha1和md5加密util工具包" />
     <MESSAGE value="#添加文件下载demo（通过filehash获得文件的元数据FileMeta）" />
     <MESSAGE value="#通过浏览器进行文件下载逻辑添加" />
-    <option name="LAST_COMMIT_MESSAGE" value="#通过浏览器进行文件下载逻辑添加" />
+    <MESSAGE value="#添加文件重命名以及文件删除操作接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="#添加文件重命名以及文件删除操作接口" />
   </component>
   <component name="WindowStateProjectService">
     <state x="141" y="39" key="SettingsEditor" timestamp="1607774893628">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="141" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1607774893628" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1608013253120">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1608018325107">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1608013253120" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1608018325107" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1608014798981">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
