@@ -60,7 +60,9 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 		fileMeta.FileSha1 = util.FileSha1(newFile)
 		fmt.Printf(fileMeta.FileSha1)
 		//将刚刚上传的文件的sha1索引添加到map中
-		meta.UpdataFileMeta(fileMeta)
+		//meta.UpdataFileMeta(fileMeta)
+		//直接写入数据库
+		meta.UpdateFileMetaDB(fileMeta)
 		// 重定向到成功的页面逻辑
 		http.Redirect(w, r, "/file/upload/suc", http.StatusFound)
 	}

@@ -16,7 +16,7 @@ func main() {
 	http.HandleFunc("/file/delete", handler.DeleteFileHandler)
 	//开启http监听
 	//err := http.ListenAndServe(":8080", nil)
-	//if err != nil {
+	//if err != nil
 	//	fmt.Printf("There is an err %s", err.Error())
 	//}
 	//上面方法不太优雅，现在用log直接包裹监听

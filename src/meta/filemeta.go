@@ -3,6 +3,8 @@ package meta
 /**
 添加文件元数据类型的结构体FileMeta，方便对文件的操作
 */
+import mydb "zone/src/db"
+
 type FileMeta struct {
 	FileSha1 string
 	FileName string
@@ -21,6 +23,12 @@ func init() {
 //UpdataFileMeta新增或者更新fileMetas的map索引
 func UpdataFileMeta(fmeta FileMeta) {
 	fileMetas[fmeta.FileSha1] = fmeta
+}
+
+//更新或新增文件信息到mysql数据库
+func UpdateFileMetaDB(fmeta FileMeta) bool {
+	return mydb.SaveFileToDB(fmeta.FileSha1, fmeta.FileName,
+		fmeta.FileSize, fmeta.Location)
 }
 
 //GetFileMeta获取文件元信息

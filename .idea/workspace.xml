@@ -19,8 +19,12 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="#添加文件重命名以及文件删除操作接口">
+    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="# 连接mysql数据库，创建mysql连接对象">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db/mysql/conn.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/mysql/conn.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/handler.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/handler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/meta/filemeta.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/meta/filemeta.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,17 +92,18 @@
     <MESSAGE value="#添加文件下载demo（通过filehash获得文件的元数据FileMeta）" />
     <MESSAGE value="#通过浏览器进行文件下载逻辑添加" />
     <MESSAGE value="#添加文件重命名以及文件删除操作接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="#添加文件重命名以及文件删除操作接口" />
+    <MESSAGE value="# 连接mysql数据库，创建mysql连接对象" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 连接mysql数据库，创建mysql连接对象" />
   </component>
   <component name="WindowStateProjectService">
     <state x="141" y="39" key="SettingsEditor" timestamp="1607774893628">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="141" y="39" key="SettingsEditor/0.0.1280.800@0.0.1280.800" timestamp="1607774893628" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1608018325107">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1608278028692">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1608018325107" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1608278028692" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1608014798981">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
