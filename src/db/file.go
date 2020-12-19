@@ -9,8 +9,7 @@ func SaveFileToDB(filehash string, filename string,
 	filesize int64, filelocation string) bool {
 	//进行防sql注入操作
 	stmt, err := mydb.DBconnect().Prepare(
-		"insert ignore into tbl_file('file_sha1','file_name','file_size','file_location','status')" +
-			",values(?,?,?,?,1)")
+		"INSERT INTO tbl_file (file_sha1,file_name,file_size,file_addr,status)VALUES(?,?,?,?,1)")
 	if err != nil {
 		fmt.Println("Failed to prepare statement, the err is ", err.Error())
 		return false

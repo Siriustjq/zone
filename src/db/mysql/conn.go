@@ -17,7 +17,7 @@ var db *sql.DB
 
 //初始化
 func init() {
-	db, _ = sql.Open("mysql", "root:root@tcp(172.17.0.2:3306)/fileserver?charset=utf8")
+	db, _ = sql.Open("mysql", "root:123456@tcp(127.0.0.1:3306)/quming?charset=utf8")
 	//设置最大连接数
 	db.SetMaxOpenConns(1000)
 	//测试连接的通断情况
