@@ -3,7 +3,10 @@ package meta
 /**
 添加文件元数据类型的结构体FileMeta，方便对文件的操作
 */
-import mydb "zone/src/db"
+import (
+	"log"
+	mydb "zone/src/db"
+)
 
 type FileMeta struct {
 	FileSha1 string
@@ -34,6 +37,22 @@ func UpdateFileMetaDB(fmeta FileMeta) bool {
 //GetFileMeta获取文件元信息
 func GetFileMeta(fsha1 string) FileMeta {
 	return fileMetas[fsha1]
+}
+
+//GetFileMetaDB从数据库中获取文件的相关信息
+func GetFileMetaDB(fsha1 string) FileMeta {
+	res, err := mydb.GetFileFromDB(fsha1)
+	if err != nil {
+		log.Fatal(err.Error())
+		return FileMeta{}
+	}
+	finalRes := FileMeta{
+		FileSha1: res.FileHash.String,
+		FileName: res.FileName.String,
+		FileSize: res.FileSize.Int64,
+		Location: res.FileAddr.String,
+	}
+	return finalRes
 }
 
 //删除文件元信息

@@ -77,7 +77,8 @@ func GetFileMetaHandler(w http.ResponseWriter, r *http.Request) {
 	//格式化请求参数信息
 	r.ParseForm()
 	filehash := r.Form["filehash"][0]
-	fMeta := meta.GetFileMeta(filehash)
+	//fMeta := meta.GetFileMeta(filehash)
+	fMeta := meta.GetFileMetaDB(filehash)
 	//将文件转换为json格式
 	data, err := json.Marshal(fMeta)
 	if err != nil {
