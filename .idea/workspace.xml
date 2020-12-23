@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="# 从数据库中查询文件信息">
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="# 添加用户表以及用户注册接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,12 +40,16 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/db/user.go" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="1lYUobfiA0qbsU9tnA26crldYhI" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
@@ -56,12 +60,12 @@
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/static/view" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/static/view" />
       <recent name="$PROJECT_DIR$/src/static" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/static/view" />
     </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -93,7 +97,8 @@
     <MESSAGE value="# 连接mysql数据库，添加相关接口方法" />
     <MESSAGE value="# 更新MySql预处理数据，实现数据的正确插入" />
     <MESSAGE value="# 从数据库中查询文件信息" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 从数据库中查询文件信息" />
+    <MESSAGE value="# 添加用户表以及用户注册接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 添加用户表以及用户注册接口" />
   </component>
   <component name="WindowStateProjectService">
     <state x="0" y="236" key="#SQL_Dialects" timestamp="1608380971233">
@@ -104,10 +109,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state x="63" y="251" key="#SQL_Resolution_Scopes/0.0.1280.800@0.0.1280.800" timestamp="1608650132067" />
-    <state x="240" y="65" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608381000515">
+    <state x="240" y="65" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1608711179404">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="65" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1608381000515" />
+    <state x="240" y="65" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.800@0.0.1280.800" timestamp="1608711179404" />
     <state x="141" y="39" key="SettingsEditor" timestamp="1607774893628">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
@@ -116,10 +121,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="82" height="441" key="SqlResolveConfigurable/0.0.1280.800@0.0.1280.800" timestamp="1608650120657" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1608553474746">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1608650350805">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1608553474746" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1608650350805" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1608014798981">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
