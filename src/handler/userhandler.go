@@ -59,6 +59,7 @@ func UserSignInHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method == "GET" {
 		data, err := ioutil.ReadFile("static/view/signin.html")
 		if err != nil {
+			//其实还是建议不要使用这个方法，一旦出错直接执行OS.EXIT(1)了
 			log.Fatal(err.Error())
 			return
 		}

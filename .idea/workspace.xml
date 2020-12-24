@@ -19,11 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="# 用户注册接口完成，以及前端页面整合">
+    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="# 用户登录接口设计，并添加用户token表">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/db/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/db/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/handler/userhandler.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/userhandler.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,7 +99,8 @@
     <MESSAGE value="# 从数据库中查询文件信息" />
     <MESSAGE value="# 添加用户表以及用户注册接口" />
     <MESSAGE value="# 用户注册接口完成，以及前端页面整合" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 用户注册接口完成，以及前端页面整合" />
+    <MESSAGE value="# 用户登录接口设计，并添加用户token表" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 用户登录接口设计，并添加用户token表" />
   </component>
   <component name="WindowStateProjectService">
     <state x="0" y="236" key="#SQL_Dialects" timestamp="1608380971233">
@@ -124,10 +123,10 @@
       <screen x="0" y="0" width="1280" height="800" />
     </state>
     <state width="82" height="441" key="SqlResolveConfigurable/0.0.1280.800@0.0.1280.800" timestamp="1608650120657" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1608723650169">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1608728148820">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1608723650169" />
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800@0.0.1280.800" timestamp="1608728148820" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1608014798981">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
