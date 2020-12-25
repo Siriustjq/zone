@@ -10,7 +10,9 @@ import (
 	"zone/src/util"
 )
 
-const ex = "tjq"
+const (
+	ex = "tjq"
+)
 
 /**
 主要来处理用户注册的一些业务逻辑
@@ -78,7 +80,24 @@ func UserSignInHandler(w http.ResponseWriter, r *http.Request) {
 			//向数据库中更新用户的token信息
 			if mydb.UpdateUserToken(username, token) {
 				//成功重定向到主页
-				w.Write([]byte("http://" + r.Host + "/static/view/home.html"))
+				//w.Write([]byte("http://" + r.Host + "/static/view/home.html"))
+				//构建成功登陆后的返回对象RespMsg
+				resp := util.RespMsg{
+					Code: 0,
+					Msg:  "OK",
+					Data: struct {
+						//返回静态页面的地址
+						Location string
+						Username string
+						Token    string
+					}{
+						Location: "http://" + r.Host + "/static/view/home.html",
+						Username: username,
+						Token:    token,
+					},
+				}
+				w.Write(resp.JSONBytes())
+
 			} else {
 				w.Write([]byte("更新用户token失败"))
 				return
@@ -95,4 +114,37 @@ func GenerateToken(name string) string {
 	//取name+当前时间+ex的md5值再加前八位的当前时间
 	t := fmt.Sprintf("%x", time.Now().Unix())
 	return util.MD5([]byte(name+t+ex)) + t[:8]
+}
+
+//首页返回用户信息
+func UserInfoHandler(w http.ResponseWriter, r *http.Request) {
+	//从表单中获取信息
+	r.ParseForm()
+	username := r.Form.Get("username")
+	token := r.Form.Get("token")
+	//验证token的有效性
+	if !IsTokenValid(token, username) {
+		w.WriteHeader(http.StatusForbidden)
+		return
+	}
+	//具体查询用户信息
+	user, err := mydb.GetUserInfo(username)
+	if err != nil {
+		log.Print("wrong")
+		w.WriteHeader(http.StatusForbidden)
+		return
+	}
+	//封装返回前端的数据
+	resp := util.RespMsg{
+		Code: 0,
+		Msg:  "OK",
+		Data: user,
+	}
+	w.Write(resp.JSONBytes())
+}
+
+func IsTokenValid(token string, username string) bool {
+	//判断token的时效性
+	//判断token是否和username查出来的一样
+	return true
 }

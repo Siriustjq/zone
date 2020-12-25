@@ -78,13 +78,14 @@
         alert(err);
       },
       success: function (body) {
-        localStorage.setItem("token", body.data.Token)
-        localStorage.setItem("username", body.data.Username)
+        // alert(body.data.code)
+        // localStorage.setItem("token", body.data.Token)
+        // localStorage.setItem("username", body.data.Username)
         // 增加上传入口ip:port
-        localStorage.setItem("uploadEntry", body.data.UploadEntry);
-        // 增加下载入口ip:port
-        localStorage.setItem("downloadEntry", body.data.DownloadEntry);
-        window.location.href = body.data.Location;
+        // localStorage.setItem("uploadEntry", body.data.UploadEntry);
+        // // 增加下载入口ip:port
+        // localStorage.setItem("downloadEntry", body.data.DownloadEntry);
+        window.location.href = "http://localhost:8081/static/view/home.html";
       }
     });
   }
