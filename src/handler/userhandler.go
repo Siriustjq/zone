@@ -121,12 +121,12 @@ func UserInfoHandler(w http.ResponseWriter, r *http.Request) {
 	//从表单中获取信息
 	r.ParseForm()
 	username := r.Form.Get("username")
-	token := r.Form.Get("token")
-	//验证token的有效性
-	if !IsTokenValid(token, username) {
-		w.WriteHeader(http.StatusForbidden)
-		return
-	}
+	//token := r.Form.Get("token")
+	//验证token的有效性，在添加了http拦截器之后，这部分便可以直接注释掉了
+	//if !IsTokenValid(token, username) {
+	//	w.WriteHeader(http.StatusForbidden)
+	//	return
+	//}
 	//具体查询用户信息
 	user, err := mydb.GetUserInfo(username)
 	if err != nil {
@@ -146,5 +146,9 @@ func UserInfoHandler(w http.ResponseWriter, r *http.Request) {
 func IsTokenValid(token string, username string) bool {
 	//判断token的时效性
 	//判断token是否和username查出来的一样
+	//先判断token的长度是不是40位，如果是40位，就暂时通过token验证，反之不通过
+	if len(token) != 40 {
+		return false
+	}
 	return true
 }

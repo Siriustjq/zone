@@ -16,7 +16,8 @@ func main() {
 	http.HandleFunc("/file/delete", handler.DeleteFileHandler)
 	http.HandleFunc("/user/signup", handler.SignUpHandler)
 	http.HandleFunc("/user/signin", handler.UserSignInHandler)
-	http.HandleFunc("/user/info", handler.UserInfoHandler)
+	//添加拦截器
+	http.HandleFunc("/user/info", handler.HttpInterceptor(handler.UserInfoHandler))
 	//统筹静态资源
 	http.Handle("/static/",
 		http.StripPrefix("/static/", http.FileServer(http.Dir("./static"))))
