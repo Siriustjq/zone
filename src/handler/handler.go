@@ -8,9 +8,11 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"time"
+	db "zone/src/db"
 	"zone/src/meta"
 	"zone/src/util"
 )
@@ -63,8 +65,17 @@ func UploadHandler(w http.ResponseWriter, r *http.Request) {
 		//meta.UpdataFileMeta(fileMeta)
 		//直接写入数据库
 		meta.UpdateFileMetaDB(fileMeta)
-		// 重定向到成功的页面逻辑
-		http.Redirect(w, r, "/file/upload/suc", http.StatusFound)
+		//todo 将文件信息写入用户文件表
+		r.ParseForm()
+		username := r.Form.Get("username")
+		res := db.UpdateUserFile(username, fileMeta.FileName, fileMeta.FileSha1, fileMeta.FileSize)
+		if res {
+			// 重定向到成功的页面逻辑
+			http.Redirect(w, r, "/file/upload/suc", http.StatusFound)
+		} else {
+			log.Print("There is a wrong when try to update the tbl_user_file")
+			w.Write([]byte("Upload File Filed"))
+		}
 	}
 }
 
