@@ -164,3 +164,9 @@ func DeleteFileHandler(w http.ResponseWriter, r *http.Request) {
 	meta.DeleteMeta(filehash)
 	io.WriteString(w, "Delete success!")
 }
+
+//TODO 编辑设计秒传接口，基本思路如下：
+//另外构建一张表：用户文件表。秒传接口计算完sha1值之后去文件表中查询，如果记录存在则去写用户文件表，实现秒传。反之就是秒换失败。
+//或者换句话说，秒传只是给用户感觉是秒级别的上传速度，其实根本就没传，只是写了一个用户文件表。
+
+//TODO 分块上传文件逻辑接口

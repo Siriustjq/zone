@@ -2,6 +2,7 @@ package db
 
 import (
 	"log"
+	"time"
 	mydb "zone/src/db/mysql"
 )
 
@@ -24,7 +25,7 @@ func UpdateUserFile(username, filename, filehash string, filesize int64) bool {
 		return false
 	}
 	defer stmt.Close()
-	_, err = stmt.Exec(username, filename, filehash, filesize)
+	_, err = stmt.Exec(username, filename, filehash, filesize, time.Now())
 	if err != nil {
 		log.Print(SqlExeErr)
 		return false
