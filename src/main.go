@@ -16,6 +16,10 @@ func main() {
 	http.HandleFunc("/file/delete", handler.DeleteFileHandler)
 	http.HandleFunc("/user/signup", handler.SignUpHandler)
 	http.HandleFunc("/user/signin", handler.UserSignInHandler)
+	//分块上传接口
+	http.HandleFunc("/file/mploaded/init", handler.HttpInterceptor(handler.InitialMultipartUploadHandler))
+	http.HandleFunc("file/mploaded/uppart", handler.HttpInterceptor(handler.UploadPartHandler))
+	http.HandleFunc("file/mploaded/complete", handler.HttpInterceptor(handler.CompleteUploadHandler))
 	//添加拦截器
 	http.HandleFunc("/user/info", handler.HttpInterceptor(handler.UserInfoHandler))
 	//统筹静态资源

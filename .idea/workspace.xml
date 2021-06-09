@@ -19,8 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="# 创建redis缓存连接池以及分块初始化接口">
+    <list default="true" id="2feec2e5-b42e-42a3-bf4c-ae9cc66e5e05" name="Default Changelist" comment="# 分块合并接口">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/handler/mpupload.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/handler/mpupload.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,16 +107,18 @@
     <MESSAGE value="# 完成用户文件表设计，并织入用户文件插入接口逻辑" />
     <MESSAGE value="# 完成用户文件信息查询逻辑" />
     <MESSAGE value="# 创建redis缓存连接池以及分块初始化接口" />
-    <option name="LAST_COMMIT_MESSAGE" value="# 创建redis缓存连接池以及分块初始化接口" />
+    <MESSAGE value="# 分块合并接口" />
+    <option name="LAST_COMMIT_MESSAGE" value="# 分块合并接口" />
   </component>
   <component name="WindowStateProjectService">
     <state x="760" y="243" key="VCS.ChangeListViewerDialog" timestamp="1615444126229">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="760" y="243" key="VCS.ChangeListViewerDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1615444126229" />
-    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1622960390532">
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2" timestamp="1623141945456">
       <screen x="0" y="0" width="1280" height="800" />
     </state>
+    <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800/-1920.0.1920.1080@0.0.1280.800" timestamp="1623141945456" />
     <state x="240" y="140" key="Vcs.Push.Dialog.v2/0.0.1280.800/-1920.23.1920.1057@0.0.1280.800" timestamp="1622960390532" />
     <state x="305" y="124" width="670" height="676" key="search.everywhere.popup" timestamp="1622966375044">
       <screen x="0" y="0" width="1280" height="800" />

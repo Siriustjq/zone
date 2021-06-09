@@ -5,6 +5,7 @@ import (
 	"github.com/garyburd/redigo/redis"
 	"math"
 	"net/http"
+	"os"
 	"strconv"
 	"strings"
 	"time"
@@ -55,6 +56,45 @@ func InitialMultipartUploadHandler(w http.ResponseWriter, r *http.Request) {
 	w.Write(util.NewRespMsg(0, "OK", upInfo).JSONBytes())
 }
 
+//上传文件分块
+func UploadPartHandler(w http.ResponseWriter, r *http.Request) {
+	//1.解析用户请求参数
+	r.ParseForm()
+	//username := r.Form.Get("username")
+	uploadID := r.Form.Get("uploadid")
+	chunkIndex := r.Form.Get("index") //当前的分块是文件分块的第几块
+
+	//2.获得redis连接池中的一个连接
+	rConn := rp.RedisPool().Get()
+	defer rConn.Close()
+
+	//3.获得文件句柄，用于存储分块内容
+	fpath := "/data/" + uploadID + "/" + chunkIndex
+	os.MkdirAll(fpath, 0744)
+	fd, err := os.Create(fpath)
+	if err != nil {
+		w.Write(util.NewRespMsg(-1, "failed", nil).JSONBytes())
+		return
+	}
+	defer fd.Close()
+	//todo 可以增加一些文件校验的内容，确保文件没有丢失
+	buf := make([]byte, 1024*1024) //创建缓存buf
+	for {
+		n, err := r.Body.Read(buf)
+		fd.Write(buf[:n])
+		if err != nil {
+			break
+		}
+	}
+
+	//4.更新redis缓存状态
+	rConn.Do("HSET", "MP_"+uploadID, "chkidx"+chunkIndex, 1)
+
+	//5.返回处理结果到客户端
+	w.Write(util.NewRespMsg(0, "OK", nil).JSONBytes())
+
+}
+
 //通知上传合并
 func CompleteUploadHandler(w http.ResponseWriter, r *http.Request) {
 	//1.请求参数
@@ -79,7 +119,7 @@ func CompleteUploadHandler(w http.ResponseWriter, r *http.Request) {
 	for i := 0; i < len(data); i += 2 {
 		k := string(data[i].([]byte))
 		v := string(data[i+1].([]byte))
-		if k == "chunkcoount" {
+		if k == "chunkcount" {
 			totalCount, _ = strconv.Atoi(v)
 		} else if strings.HasPrefix(k, "chkid_") && v == "1" {
 			chunkCount += 1
